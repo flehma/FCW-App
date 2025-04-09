@@ -28,9 +28,7 @@
 <script setup lang="ts">
 
     const kader = ref<any>([]);
-    kader.value = await $fetch('/api/kader-show')
-
-    const spielerInput = ref('');
+    kader.value = await $fetch('/api/tunnel-show')
 
     async function addTunnel(spieler: any) {
         const res = await $fetch('/api/tunnel-add', {
@@ -39,7 +37,7 @@
                 spieler: spieler
             }
         }).then( async () => {
-            kader.value = await $fetch('/api/kader-show')
+            kader.value = await $fetch('/api/tunnel-show')
         })
     }
 
@@ -50,7 +48,7 @@
                 spieler: spieler
             }
         }).then( async () => {
-            kader.value = await $fetch('/api/kader-show')
+            kader.value = await $fetch('/api/tunnel-show')
         })
     }
     

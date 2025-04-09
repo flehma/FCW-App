@@ -1,12 +1,10 @@
 import { getConnection } from '../utils/db.js';
 
-export default defineEventHandler(async (event: any) => {
+export default defineEventHandler(async () => {
     try {
-        const requestBody = await readBody(event)
-        console.log(requestBody)
         
         const connection = await getConnection();
-        const [rows] = await connection.execute(`UPDATE tunnel SET tunnel = tunnel -1 WHERE spielerId = ${requestBody.spieler.id};`);
+        const [rows] = await connection.execute('SELECT kader.*, tunnel.tunnel FROM kader INNER JOIN tunnel ON kader.id = tunnel.spielerId');
         await connection.end();
         return {
             kader: rows

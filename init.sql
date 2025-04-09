@@ -1,61 +1,107 @@
 USE database;
 
--- Create a test table
+-- init all tables
 CREATE TABLE IF NOT EXISTS kader (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    name VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS spieltag (
+    spielerId INT NOT NULL UNIQUE,
+    FOREIGN KEY (spielerID) REFERENCES kader(id)
+);
+
+CREATE TABLE IF NOT EXISTS training (
+    spielerId INT NOT NULL UNIQUE,
+    FOREIGN KEY (spielerID) REFERENCES kader(id)
+);
+
+CREATE TABLE IF NOT EXISTS tunnel (
+    spielerId INT NOT NULL UNIQUE,
+    tunnel INT,
+    FOREIGN KEY (spielerID) REFERENCES kader(id)
+);
+
+CREATE TABLE IF NOT EXISTS material (
+    spielerId INT,
     flaschen INT,
     musikbox INT,
     bälle INT,
     jacken INT,
-    tunnel INT
+    FOREIGN KEY (spielerID) REFERENCES kader(id)
 );
 
--- Insert some sample data
-INSERT INTO kader (name, flaschen, musikbox, bälle, jacken, tunnel) VALUES
-    ('Boy Bröckler', 0, 0, 0, 0, 0),
-    ('Dominic Günther', 0, 0, 0, 0, 0),
-    ('Fabian Lehmann', 0, 0, 0, 0, 0),
-    ('Falk Jörns-Anders', 0, 0, 0, 0, 0),
-    ('Finn Bargiel', 0, 0, 0, 0, 0),
-    ('Hauke Güntrath-Lorenzen', 0, 0, 0, 0, 0),
-    ('Jakob Lange', 0, 0, 0, 0, 0),
-    ('Jan Lindhorst', 0, 0, 0, 0, 0),
-    ('Jan Pohlke', 0, 0, 0, 0, 0),
-    ('Joe Hoffmann', 0, 0, 0, 0, 0),
-    ('Kevin Raabe', 0, 0, 0, 0, 0),
-    ('Kim Bischoff', 0, 0, 0, 0, 0),
-    ('Kjell Boiesen', 0, 0, 0, 0, 0),
-    ('Lasse Assenheimer', 0, 0, 0, 0, 0),
-    ('Lasse Petersen', 0, 0, 0, 0, 0),
-    ('Mads Möller', 0, 0, 0, 0, 0),
-    ('Malte Klang', 0, 0, 0, 0, 0),
-    ('Mattes Nissen', 0, 0, 0, 0, 0),
-    ('Mick Degering', 0, 0, 0, 0, 0),
-    ('Nik Plöger', 0, 0, 0, 0, 0),
-    ('Ole Kreuter', 0, 0, 0, 0, 0),
-    ('Patrick Arndt', 0, 0, 0, 0, 0),
-    ('Paul Pompetzki', 0, 0, 0, 0, 0),
-    ('Peer Hoffmann', 0, 0, 0, 0, 0),
-    ('Steffen Schmück', 0, 0, 0, 0, 0),
-    ('Stephan Wendel', 0, 0, 0, 0, 0),
-    ('Sven Andresen', 0, 0, 0, 0, 0),
-    ('Tade Bendsen', 0, 0, 0, 0, 0),
-    ('Thies Freese', 0, 0, 0, 0, 0),
-    ('Thomas Erichsen', 0, 0, 0, 0, 0),
-    ('Thomas Schulz', 0, 0, 0, 0, 0),
-    ('Tim Hinrichsen', 0, 0, 0, 0, 0),
-    ('Timo Stroschein', 0, 0, 0, 0, 0),
-    ('Tjark Stroschein', 0, 0, 0, 0, 0),
-    ('Tobi Kufer', 0, 0, 0, 0, 0),
-    ('Yannik Mahler', 0, 0, 0, 0, 0);
+INSERT INTO `kader` (`id`, `name`) VALUES (1, 'Boy Bröckler');
+INSERT INTO `kader` (`id`, `name`) VALUES (2, 'Dominic Günther');
+INSERT INTO `kader` (`id`, `name`) VALUES (3, 'Fabian Lehmann');
+INSERT INTO `kader` (`id`, `name`) VALUES (4, 'Falk Jörns-Anders');
+INSERT INTO `kader` (`id`, `name`) VALUES (5, 'Finn Bargiel');
+INSERT INTO `kader` (`id`, `name`) VALUES (6, 'Hauke Güntrath-Lorenzen');
+INSERT INTO `kader` (`id`, `name`) VALUES (7, 'Jakob Lange');
+INSERT INTO `kader` (`id`, `name`) VALUES (8, 'Jan Lindhorst');
+INSERT INTO `kader` (`id`, `name`) VALUES (9, 'Jan Pohlke');
+INSERT INTO `kader` (`id`, `name`) VALUES (10, 'Joe Hoffmann');
+INSERT INTO `kader` (`id`, `name`) VALUES (11, 'Kevin Raabe');
+INSERT INTO `kader` (`id`, `name`) VALUES (12, 'Kim Bischoff');
+INSERT INTO `kader` (`id`, `name`) VALUES (13, 'Kjell Boiesen');
+INSERT INTO `kader` (`id`, `name`) VALUES (14, 'Lasse Assenheimer');
+INSERT INTO `kader` (`id`, `name`) VALUES (15, 'Lasse Petersen');
+INSERT INTO `kader` (`id`, `name`) VALUES (16, 'Mads Möller');
+INSERT INTO `kader` (`id`, `name`) VALUES (17, 'Malte Klang');
+INSERT INTO `kader` (`id`, `name`) VALUES (18, 'Mattes Nissen');
+INSERT INTO `kader` (`id`, `name`) VALUES (19, 'Mick Degering');
+INSERT INTO `kader` (`id`, `name`) VALUES (20, 'Nik Plöger');
+INSERT INTO `kader` (`id`, `name`) VALUES (21, 'Ole Kreuter');
+INSERT INTO `kader` (`id`, `name`) VALUES (22, 'Patrick Arndt');
+INSERT INTO `kader` (`id`, `name`) VALUES (23, 'Paul Pompetzki');
+INSERT INTO `kader` (`id`, `name`) VALUES (24, 'Peer Hoffmann');
+INSERT INTO `kader` (`id`, `name`) VALUES (25, 'Steffen Schmück');
+INSERT INTO `kader` (`id`, `name`) VALUES (26, 'Stephan Wendel');
+INSERT INTO `kader` (`id`, `name`) VALUES (27, 'Sven Andresen');
+INSERT INTO `kader` (`id`, `name`) VALUES (28, 'Tade Bendsen');
+INSERT INTO `kader` (`id`, `name`) VALUES (29, 'Thies Freese');
+INSERT INTO `kader` (`id`, `name`) VALUES (30, 'Thomas Erichsen');
+INSERT INTO `kader` (`id`, `name`) VALUES (31, 'Thomas Schulz');
+INSERT INTO `kader` (`id`, `name`) VALUES (32, 'Tim Hinrichsen');
+INSERT INTO `kader` (`id`, `name`) VALUES (33, 'Timo Stroschein');
+INSERT INTO `kader` (`id`, `name`) VALUES (34, 'Tjark Stroschein');
+INSERT INTO `kader` (`id`, `name`) VALUES (35, 'Tobi Kufer');
+INSERT INTO `kader` (`id`, `name`) VALUES (36, 'Yannik Mahler');
 
-    CREATE TABLE IF NOT EXISTS spieltag (
-        spielerId INT NOT NULL UNIQUE,
-        FOREIGN KEY (spielerID) REFERENCES kader(id)
-    );
-
-    CREATE TABLE IF NOT EXISTS training (
-        spielerId INT NOT NULL UNIQUE,
-        FOREIGN KEY (spielerID) REFERENCES kader(id)
-    );
+INSERT INTO `tunnel` (spielerId, tunnel) VALUES 
+    (1, 2),
+    (2, 0),
+    (3, 4),
+    (4, 10),
+    (5, 1),
+    (6, 20),
+    (7, 3),
+    (8, 3),
+    (9, 5),
+    (10, 7),
+    (11, 1),
+    (12, 0),
+    (13, 10),
+    (14, 0),
+    (15, 3),
+    (16, 10),
+    (17, 4),
+    (18, 3),
+    (19, 4),
+    (20, 6),
+    (21, 0),
+    (22, 2),
+    (23, 4),
+    (24, 0),
+    (25, 0),
+    (26, 0),
+    (27, 9),
+    (28, 0),
+    (29, 4),
+    (30, 0),
+    (31, 0),
+    (32, 5),
+    (33, 6),
+    (34, 1),
+    (35, 0),
+    (36, 3);

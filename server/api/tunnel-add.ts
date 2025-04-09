@@ -6,7 +6,7 @@ export default defineEventHandler(async (event: any) => {
         console.log(requestBody)
         
         const connection = await getConnection();
-        const [rows] = await connection.execute(`UPDATE kader SET tunnel = tunnel +1 WHERE id = ${requestBody.spieler.id};`);
+        const [rows] = await connection.execute(`UPDATE tunnel SET tunnel = tunnel +1 WHERE spielerId = ${requestBody.spieler.id};`);
         await connection.end();
         return {
             kader: rows
