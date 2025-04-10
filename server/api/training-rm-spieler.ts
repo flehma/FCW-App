@@ -1,9 +1,12 @@
 import { getConnection } from '../utils/db.js';
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
     try {
+        const requestBody = await readBody(event)
+        console.log(requestBody)
+        
         const connection = await getConnection();
-        const [rows] = await connection.execute('SELECT k.* FROM training t JOIN kader k ON t.spielerId = k.id');
+        const [rows] = await connection.execute(`DELETE FROM training WHERE spielerId = ${requestBody.spieler.id};`);
         await connection.end();
         return {
             kader: rows

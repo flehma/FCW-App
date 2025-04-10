@@ -7,12 +7,12 @@
         </div>
         <div v-if="kader" class="flex flex-col gap-2 mt-2">
             
-            <div class="p-3 px-6 rounded bg-slate-100 flex items-center justify-between" v-for="row in kader?.kader" :key="row.id">
+            <div class="p-3 rounded bg-slate-100 flex items-center justify-between" v-for="row in kader?.kader" :key="row.id">
                 <div class="">
                     <p class="font-semibold"> {{ row?.name }}</p>
                 </div>
 
-                <div class="justify-between">              
+                <div class="justify-between min-w-[184px]">              
                     <button @click="trainingAddSpieler(row)" class="mr-2 p-2 px-4 bg-green-500 text-white rounded hover:bg-green-400">
                         <svg fill="#000000" height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M435.2,409.6h-6.775L306.031,17.963C302.694,7.279,292.796,0,281.6,0h-51.2c-11.196,0-21.094,7.279-24.431,17.963 L83.575,409.6H76.8c-28.228,0-51.2,22.963-51.2,51.2c0,28.228,22.972,51.2,51.2,51.2h358.4c28.237,0,51.2-22.972,51.2-51.2 C486.4,432.563,463.437,409.6,435.2,409.6z M230.4,25.6h51.2l23.996,76.8h-99.2L230.4,25.6z M198.4,128h115.2l23.996,76.8h-163.2 L198.4,128z M166.4,230.4h179.2l23.996,76.8h-227.2L166.4,230.4z M134.4,332.8h243.2l23.996,76.8h-291.2L134.4,332.8z C460.8,474.94,449.34,486.4,435.2,486.4z"/></g></g></svg>
                     </button>
