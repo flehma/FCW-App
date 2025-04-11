@@ -68,40 +68,77 @@ INSERT INTO `kader` (`id`, `name`) VALUES (34, 'Tjark Stroschein');
 INSERT INTO `kader` (`id`, `name`) VALUES (35, 'Tobi Kufer');
 INSERT INTO `kader` (`id`, `name`) VALUES (36, 'Yannik Mahler');
 
-INSERT INTO `tunnel` (spielerId, tunnel) VALUES 
-    (1, 2),
-    (2, 0),
-    (3, 4),
-    (4, 10),
-    (5, 1),
-    (6, 20),
-    (7, 3),
-    (8, 3),
-    (9, 5),
-    (10, 7),
-    (11, 1),
-    (12, 0),
-    (13, 10),
-    (14, 0),
-    (15, 3),
-    (16, 10),
-    (17, 4),
-    (18, 3),
-    (19, 4),
-    (20, 6),
-    (21, 0),
-    (22, 2),
-    (23, 4),
-    (24, 0),
-    (25, 0),
-    (26, 0),
-    (27, 9),
-    (28, 0),
-    (29, 4),
-    (30, 0),
-    (31, 0),
-    (32, 5),
-    (33, 6),
-    (34, 1),
-    (35, 0),
-    (36, 3);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (1, 2);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (2, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (3, 4);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (4, 10);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (5, 1);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (6, 20);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (7, 3);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (8, 3);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (9, 5);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (10, 7);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (11, 1);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (12, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (13, 10);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (14, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (15, 3);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (16, 10);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (17, 4);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (18, 3);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (19, 4);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (20, 6);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (21, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (22, 2);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (23, 4);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (24, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (25, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (26, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (27, 9);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (28, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (29, 4);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (30, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (31, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (32, 5);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (33, 6);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (34, 1);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (35, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (36, 3);
+
+
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (1, NULL, NULL, 1, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (2, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (3, 1, 2, NULL, 1);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (4, 2, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (5, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (6, 1, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (7, 1, NULL, NULL, 2);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (8, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (9, NULL, NULL, NULL, 1);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (10, 2, NULL, 3, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (11, NULL, 1, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (12, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (13, NULL, NULL, 2, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (14, NULL, 1, 1, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (15, 1, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (16, NULL, NULL, NULL, 1);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (17, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (18, NULL, 4, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (19, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (20, NULL, NULL, 1, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (21, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (22, NULL, 1, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (23, NULL, NULL, 1, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (24, 1, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (25, 1, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (26, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (27, NULL, 1, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (28, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (29, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (30, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (31, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (32, NULL, 1, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (33, 1, NULL, NULL, 1);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (34, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (35, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (36, NULL, NULL, 1, NULL);
