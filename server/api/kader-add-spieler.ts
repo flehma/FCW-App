@@ -6,7 +6,10 @@ export default defineEventHandler(async (event: any) => {
         console.log(requestBody.id)
         
         const connection = await getConnection();
-        const [rows] = await connection.execute(`INSERT INTO kader (name, flaschen, musikbox, bälle, jacken) VALUES ("${requestBody.name}", 0, 0, 0, 0);`);
+        const [rows] = await connection.execute(`INSERT INTO kader (name) VALUES ("${requestBody.name}");`);
+        await connection.execute(`INSERT INTO tunnel (spielerId, tunnel) VALUES ("${rows.insertId}", 0);`)
+        await connection.execute(`INSERT INTO material (spielerId, flaschen, musikbox, bälle, jacken) VALUES ("${rows.insertId}",NULL,NULL,NULL,NULL);`)
+        console.log("huhu: ", rows)
         await connection.end();
         return {
             kader: rows
