@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     }
   },
   vite: {
-    allowedHosts: ['localhost', 'fcw-app.cloud']
+    server: {
+      allowedHosts: ['localhost', 'fcw-app.cloud']
+    }
   }
 })
