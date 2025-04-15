@@ -46,7 +46,6 @@
         })
     }
     async function addSpieler() {
-        console.log('huhu')
         const res = await $fetch('/api/training-add-spieler', {
             method: "POST",
             body: {

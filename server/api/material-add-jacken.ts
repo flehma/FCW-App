@@ -3,11 +3,14 @@ import { getConnection } from '../utils/db.js';
 export default defineEventHandler(async (event: any) => {
     try {
         const requestBody = await readBody(event)
+        console.log(requestBody)
         
         const connection = await getConnection();
-        const [rows] = await connection.execute(`INSERT INTO kader (name) VALUES ("${requestBody.name}");`);
-        await connection.execute(`INSERT INTO tunnel (spielerId, tunnel) VALUES ("${rows.insertId}", 0);`)
-        await connection.execute(`INSERT INTO material (spielerId, flaschen, musikbox, bälle, jacken) VALUES ("${rows.insertId}",NULL,NULL,NULL,NULL);`)
+
+        let update = '1';
+        if (requestBody.spieler.jacken > 0) update = 'jacken + 1'
+
+        const [rows] = await connection.execute(`UPDATE material SET jacken = ${update} where spielerId = ${requestBody.spieler.id};`);
         await connection.end();
         return {
             kader: rows
