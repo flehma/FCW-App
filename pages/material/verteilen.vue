@@ -1,10 +1,10 @@
 <template>
     <div class="p-4">
-        *Materialausgabe Spieltag*<br>
-        *Flaschen* 🥤: {{ material.flaschen[0].name }}<br><br>
-        *Bälle* ⚽: {{ material.bälle[0].name }}<br><br>
-        *Musikbox* 🎵:  {{ material.musikbox[0].name }}<br><br>
-        *Jacken* 🧥: {{ material.jacken[0].name }} falls wir die brauchen<br><br>
+        *Materialausgabe Spieltag*<br><br>
+        *Flaschen* 🥤: @{{ material.flaschen[0].name }}<br><br>
+        *Bälle* ⚽: @{{ material.bälle[0].name }}<br><br>
+        *Musikbox* 🎵:  @{{ material.musikbox[0].name }}<br><br>
+        *Jacken* 🧥: @{{ material.jacken[0].name }} falls wir die brauchen<br><br>
         *Kühlkoffer* 🚑: @Hauke Güntrath-Lorenzen<br><br>
         Bitte heute nach dem Training mitnehmen!<br><br>
         _Die Aufgabe zählt sowie für die Hin- und auch Abreise_<br><br>
