@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       database: true
     }
   },
-  server: {
+  vite: {
     allowedHosts: ['localhost', 'fcw-app.cloud']
   }
 })
