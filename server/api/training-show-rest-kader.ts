@@ -3,7 +3,7 @@ import { getConnection } from '../utils/db.js';
 export default defineEventHandler(async () => {
     try {
         const connection = await getConnection();
-        const [rows] = await connection.execute('SELECT k.* FROM kader k WHERE id NOT IN (SELECT spielerId FROM training);');
+        const [rows] = await connection.execute('SELECT k.* FROM kader k WHERE id NOT IN (SELECT spielerId FROM training) ORDER BY k.name;');
         await connection.end();
         return {
             kader: rows
