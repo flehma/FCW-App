@@ -92,7 +92,7 @@
     }
 
     async function addBälle() {
-        const res = await $fetch('/api/material-add-bälle', {
+        const res = await $fetch('/api/material-add-baelle', {
             method: "POST",
             body: {
                 spieler: selectedBälle.value

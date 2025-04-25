@@ -49,6 +49,13 @@
                             <tr>
                                 <td class="font-bold">Musikbox:</td>
                                 <td>{{ row?.musikbox }}</td>
+                            </tr><tr>
+                                <td class="font-bold">Strafen:</td>
+                                <td>{{ row?.geld }}€</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">offene Kisten:</td>
+                                <td>{{ row?.kiste }}</td>
                             </tr>
                     </tbody>
                     </table>
