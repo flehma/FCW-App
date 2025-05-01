@@ -72,7 +72,14 @@
     }
 
     async function calculate() {
-        betrag.value = selectedStrafe.value.wert_geld * anzahl;
+        if(selectedStrafe.value.pro_x_text && selectedStrafe.value.pro_x_text == 'pro 5 min') {
+            betrag.value = selectedStrafe.value.wert_geld * anzahl / 5;
+        } else if (selectedStrafe.value.pro_x_text && selectedStrafe.value.pro_x_text == 'pro Teil') {
+            betrag.value = selectedStrafe.value.wert_geld * anzahl
+        } else {
+            betrag.value = selectedStrafe.value.wert_geld
+        }
+        
     }
 
 </script>
