@@ -4,14 +4,22 @@
         <div v-if="strafen" class="flex flex-col gap-2 mt-2">
             <div  v-for="strafe in strafen?.strafen">
                 <div class="p-3 rounded bg-slate-100 flex items-center justify-between">
-                    <div>
+                    <div class="max-w-[272px]">
                         {{ strafe?.strafe }} {{ strafe?.pro_x_text }}
                     </div>
-                    <div class="font-semibold">
-                        {{ strafe?.wert_geld }}€ <span v-if="strafe?.wert_kiste">und {{ strafe?.wert_kiste }}&nbsp;Kiste</span>
+                    <div v-if="strafe?.wert_kiste" class="font-semibold text-center p-1 rounded bg-blue-500 w-[60px] h-[60px]">
+                        {{ strafe?.wert_geld }}€<br>{{ strafe?.wert_kiste }}&nbsp;Kiste
+                    </div>
+                    <div v-if="!strafe?.wert_kiste" class="font-semibold text-center p-1 rounded bg-blue-500 w-[60px] ">
+                        {{ strafe?.wert_geld }}€
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="flex mt-2 flex-col items-center">
+            <RouterLink to="/strafen">
+                <button class="inline-flex items-center border border-blue-300 px-3 py-1.5 rounded-md text-blue-500 hover:bg-blue-50">Zurück</button>
+            </RouterLink>        
         </div>
     </div>
 </template>

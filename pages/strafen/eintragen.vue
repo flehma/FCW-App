@@ -39,7 +39,7 @@
         <button @click="eintragen" class="m-2 p-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-400">
             Eintragen
         </button>
-        <RouterLink to="/material">
+        <RouterLink to="/strafen">
             <button class="inline-flex items-center border border-blue-300 px-4 py-2 rounded-md text-blue-500 hover:bg-blue-50">Zurück</button>
         </RouterLink>        
     </div>
