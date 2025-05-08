@@ -18,14 +18,16 @@
                     </div>
                 </RouterLink>
             </div>
-            <div @click="clear" class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
-                <div class="p-9">
-                    <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 9H22M19 14H22M19 19H21M16 6L15.1991 18.0129C15.129 19.065 15.0939 19.5911 14.8667 19.99C14.6666 20.3412 14.3648 20.6235 14.0011 20.7998C13.588 21 13.0607 21 12.0062 21H7.99377C6.93927 21 6.41202 21 5.99889 20.7998C5.63517 20.6235 5.33339 20.3412 5.13332 19.99C4.90607 19.5911 4.871 19.065 4.80086 18.0129L4 6M2 6H18M14 6L13.7294 5.18807C13.4671 4.40125 13.3359 4.00784 13.0927 3.71698C12.8779 3.46013 12.6021 3.26132 12.2905 3.13878C11.9376 3 11.523 3 10.6936 3H9.30643C8.47705 3 8.06236 3 7.70951 3.13878C7.39792 3.26132 7.12208 3.46013 6.90729 3.71698C6.66405 4.00784 6.53292 4.40125 6.27064 5.18807L6 6M12 10V17M8 10L7.99995 16.9998" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Aufräumen</h3>
-                    <p class="mt-6 text-base text-gray-600">Hier können die Spieler für den Spieltag, sowie das Training entfernt werden.</p>
-                </div>
+            <div class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
+                <RouterLink to="/strafen">
+                    <div class="p-9">
+                        <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8.94444C15.1834 7.76165 13.9037 7 12.4653 7C9.99917 7 8 9.23858 8 12C8 14.7614 9.99917 17 12.4653 17C13.9037 17 15.1834 16.2384 16 15.0556M7 10.5H11M7 13.5H11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Strafen</h3>
+                        <p class="mt-6 text-base text-gray-600">Hier können Strafen eingesehen und eingetragen und auch beglichen werden</p>
+                    </div>
+                </RouterLink>
             </div>
             <div class="relative">
                 <div class="absolute -inset-1">
@@ -35,29 +37,27 @@
                 </div>
                 <RouterLink to="/tunnel">
                     <div class="relative overflow-hidden bg-white shadow-md rounded-xl h-full cursor-pointer">
-                        <div class="p-9"><svg fill="#000000" height="48px" width="48px" version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="-63 65 128 128" xml:space="preserve">
-                            <path d="M-14.2,148v-19.3c0-7.8,6.4-14.2,14.2-14.2s14.2,6.4,14.2,14.2V148H-14.2z M1,83.8c20.6,0,37.4,16.7,37.4,37.4v48.2H49
-                                v-48.2c0-26.5-21.5-48-48-48s-48,21.5-48,48v48.2h10.6v-48.2C-36.4,100.5-19.6,83.8,1,83.8 M2.9,152.1h-5.8l-0.7,4.1h7.2L2.9,152.1z
-                                M4.6,162.4h-9.3l-1.1,6.1H5.7L4.6,162.4z M7.1,176.7H-7.2l-1.3,8.1h17L7.1,176.7z"/>
-                        </svg>
+                        <div class="p-9">
+                            <svg fill="#000000" height="48px" width="48px" version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-63 65 128 128" xml:space="preserve">
+                                <path d="M-14.2,148v-19.3c0-7.8,6.4-14.2,14.2-14.2s14.2,6.4,14.2,14.2V148H-14.2z M1,83.8c20.6,0,37.4,16.7,37.4,37.4v48.2H49 v-48.2c0-26.5-21.5-48-48-48s-48,21.5-48,48v48.2h10.6v-48.2C-36.4,100.5-19.6,83.8,1,83.8 M2.9,152.1h-5.8l-0.7,4.1h7.2L2.9,152.1z M4.6,162.4h-9.3l-1.1,6.1H5.7L4.6,162.4z M7.1,176.7H-7.2l-1.3,8.1h17L7.1,176.7z"/>
+                            </svg>
                             <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Tunnel</h3>
                             <p class="mt-6 text-base text-gray-600">Hier können die Tunnel aus den Eckspielen vor Trainings- und Spielbeginn eingetragen werden.</p>
                         </div>
                     </div>
                 </RouterLink>
             </div>
-            <RouterLink to="/material">
-                <div class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
+            <div class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
+                <RouterLink to="/material">
                     <div class="p-9">
                         <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 8L15.8043 10.7639M12 8L8.1958 10.7639M12 8V5M15.8043 10.7639L14.3512 15.2361M15.8043 10.7639L18.5 9.5M14.3512 15.2361H9.64889M14.3512 15.2361L16 17.5M9.64889 15.2361L8.1958 10.7639M9.64889 15.2361L8 17.5M8.1958 10.7639L5.5 9.5M5.5 9.5L2.04938 13M5.5 9.5L4.5 5.38544M18.5 9.5L21.9506 13M18.5 9.5L19.5 5.38544M12 5L8.62434 2.58409M12 5L15.3757 2.58409M8 17.5L3.33782 17M8 17.5L10.5 21.8883M16 17.5L20.6622 17M16 17.5L13.5 21.8883M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Material</h3>
                         <p class="mt-6 text-base text-gray-600">Hier wird das Material unter den Spielern verteilt.</p>
-                    </div>
-                </div>
-            </RouterLink>
+                    </div>    
+                </RouterLink>
+            </div>
             <div class="relative">
                 <div class="absolute -inset-1">
                     <div
@@ -71,21 +71,19 @@
                         </svg>
                         <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Bier
                         </h3>
-                        <p class="mt-6 text-base text-gray-600">Hier kann anhand der Erfolgen und sonstigen Ereignissen der Saison das Bier für die Woche verteilt werden.</p>
+                        <p class="mt-6 text-base text-gray-600">Hier kann anhand der Ereignisse der Saison das Bier verteilt werden.</p>
                     </div>
                 </div>
             </div>
-            <RouterLink to="/strafen">
-                <div class="overflow-hidden bg-white shadow-md rounded-xl">
-                    <div class="p-9">
-                        <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 8.94444C15.1834 7.76165 13.9037 7 12.4653 7C9.99917 7 8 9.23858 8 12C8 14.7614 9.99917 17 12.4653 17C13.9037 17 15.1834 16.2384 16 15.0556M7 10.5H11M7 13.5H11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Strafen</h3>
-                        <p class="mt-6 text-base text-gray-600">Hier können Strafen eingesehen und eingetragen werden</p>
-                    </div>
+            <div @click="clear" class="overflow-hidden bg-white shadow-md rounded-xl">
+                <div class="p-9">
+                    <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9H22M19 14H22M19 19H21M16 6L15.1991 18.0129C15.129 19.065 15.0939 19.5911 14.8667 19.99C14.6666 20.3412 14.3648 20.6235 14.0011 20.7998C13.588 21 13.0607 21 12.0062 21H7.99377C6.93927 21 6.41202 21 5.99889 20.7998C5.63517 20.6235 5.33339 20.3412 5.13332 19.99C4.90607 19.5911 4.871 19.065 4.80086 18.0129L4 6M2 6H18M14 6L13.7294 5.18807C13.4671 4.40125 13.3359 4.00784 13.0927 3.71698C12.8779 3.46013 12.6021 3.26132 12.2905 3.13878C11.9376 3 11.523 3 10.6936 3H9.30643C8.47705 3 8.06236 3 7.70951 3.13878C7.39792 3.26132 7.12208 3.46013 6.90729 3.71698C6.66405 4.00784 6.53292 4.40125 6.27064 5.18807L6 6M12 10V17M8 10L7.99995 16.9998" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Aufräumen</h3>
+                    <p class="mt-6 text-base text-gray-600">Hier können die Spieler für den Spieltag, sowie das Training entfernt werden.</p>
                 </div>
-            </RouterLink>
+            </div>
         </div>
 </template>
 
