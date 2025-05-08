@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS strafkisten (
 
 CREATE TABLE IF NOT EXISTS strafkisten_log (
     spielerId INT,
-    strafkistenId,
+    strafkistenId INT,
     FOREIGN KEY (spielerID) REFERENCES kader(id),
-    FOREIGN KEY (strafkistenId) REFERENCES strafkisten(id),
+    FOREIGN KEY (strafkistenId) REFERENCES strafkisten(id)
 );
 
 INSERT INTO `kader` (`id`, `name`) VALUES (1, 'Boy Bröckler');
@@ -198,7 +198,7 @@ INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) 
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (1, '1. mal Kapitän', 'TRUE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (2, '1. Tor in Blau', 'TRUE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (3, '1. Tor in Rot', 'TRUE');
-INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (4, '1. Tor in Weiß, NULL', 'TRUE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (4, '1. Tor in Weiß', 'TRUE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (5, 'Doppelpack', 'FALSE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (6, 'Hattrick', 'FALSE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (7, 'Neue Bolzer', 'FALSE');
@@ -206,41 +206,41 @@ INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (8, 'Geburtstag', 'T
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (9, 'Zu früh Bier geöffnet', 'FALSE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (10, 'Bier verschüttet', 'FALSE');
 
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (1, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (2, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (3, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (4, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (5, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (6, 5, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (7, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (8, 15, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (9, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (10, 44, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (11, 2, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (12, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (13, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (14, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (15, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (16, 4, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (17, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (18, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (19, 2, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (20, 12, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (21, 5, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (22, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (23, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (24, 5, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (25, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (26, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (27, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (28, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (29, 2, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (30, 15, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (31, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (32, 5, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (33, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (34, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (35, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (36, 10, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (37, NULL, NULL);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (38, NULL, NULL);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (1, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (2, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (3, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (4, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (5, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (6, 5, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (7, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (8, 15, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (9, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (10, 44, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (11, 2, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (12, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (13, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (14, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (15, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (16, 4, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (17, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (18, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (19, 2, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (20, 12, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (21, 5, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (22, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (23, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (24, 5, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (25, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (26, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (27, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (28, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (29, 2, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (30, 15, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (31, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (32, 5, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (33, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (34, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (35, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (36, 10, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (37, 0, 0);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (38, 0, 0);
