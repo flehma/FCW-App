@@ -100,6 +100,8 @@
             body: {
             spieler: spieler
             }
+        }).then( async () => {
+            kader.value = await $fetch('/api/kader-show')
         })
     }
     async function trainingAddSpieler(spieler: any) {
@@ -108,6 +110,8 @@
             body: {
             spieler: spieler
             }
+        }).then( async () => {
+            kader.value = await $fetch('/api/kader-show')
         })
     }
     function openDetails(id: any) {
