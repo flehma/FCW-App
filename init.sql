@@ -39,11 +39,24 @@ CREATE TABLE IF NOT EXISTS strafen (
     wert_kiste INT
 );
 
-CREATE TABLE spieler_strafen (
+CREATE TABLE IF NOT EXISTS spieler_strafen (
     spielerId INT,
     geld INT,
     kiste INT,
     FOREIGN KEY (spielerID) REFERENCES kader(id)
+);
+
+CREATE TABLE IF NOT EXISTS strafkisten (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    strafe VARCHAR(255),
+    einmal ENUM('TRUE', 'FALSE')
+);
+
+CREATE TABLE IF NOT EXISTS strafkisten_log (
+    spielerId INT,
+    strafkistenId,
+    FOREIGN KEY (spielerID) REFERENCES kader(id),
+    FOREIGN KEY (strafkistenId) REFERENCES strafkisten(id),
 );
 
 INSERT INTO `kader` (`id`, `name`) VALUES (1, 'Boy Bröckler');
@@ -92,7 +105,7 @@ INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (2, 0);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (3, 5);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (4, 10);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (5, 1);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (6, 20);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (6, 24);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (7, 3);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (8, 3);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (9, 8);
@@ -101,25 +114,25 @@ INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (11, 4);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (12, 1);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (13, 11);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (14, 0);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (15, 3);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (15, 4);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (16, 10);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (17, 5);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (17, 6);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (18, 3);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (19, 4);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (20, 10);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (21, 0);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (22, 2);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (23, 5);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (24, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (24, 1);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (25, 0);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (26, 0);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (27, 10);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (28, 0);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (29, 4);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (30, 0);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (30, 1);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (31, 0);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (32, 7);
-INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (33, 8);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (32, 9);
+INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (33, 9);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (34, 1);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (35, 0);
 INSERT INTO `tunnel` (`spielerId`, `tunnel`) VALUES (36, 3);
@@ -181,6 +194,17 @@ INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) 
 INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (10, 'Handy klingelt während Besprechungen', NULL, 2, NULL);
 INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (11, 'Vereinskleidung wird zu Spielen nicht getragen', 'pro Teil', 2, NULL);
 INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (12, 'Spielkleidung wird zum Training getragen', 'pro Teil', 2, NULL);
+
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (1, '1. mal Kapitän', 'TRUE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (2, '1. Tor in Blau', 'TRUE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (3, '1. Tor in Rot', 'TRUE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (4, '1. Tor in Weiß, NULL', 'TRUE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (5, 'Doppelpack', 'FALSE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (6, 'Hattrick', 'FALSE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (7, 'Neue Bolzer', 'FALSE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (8, 'Geburtstag', 'TRUE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (9, 'Zu früh Bier geöffnet', 'FALSE');
+INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (10, 'Bier verschüttet', 'FALSE');
 
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (1, NULL, NULL);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (2, NULL, NULL);
