@@ -8,7 +8,6 @@ export default defineEventHandler(async (event: any) => {
         const connection = await getConnection();
         if(requestBody.strafe.einmal == 'TRUE') {
             const [checkUp] = await connection.execute(`SELECT * FROM strafkisten_log WHERE spielerId = ${requestBody.spieler.id} AND strafkistenId = ${requestBody.strafe.id}`);
-            console.log('checkUp', checkUp);
             if(checkUp.length > 0) return "Strafe darf nur einmal pro Spieler verteilt werden";
         }
         

@@ -32,7 +32,7 @@
     kader.value = await $fetch('/api/kader-show')
 
     const strafen = ref<any>([]);
-    strafen.value = await $fetch('/api/strafkisten-show')
+    strafen.value = await $fetch('/api/bier-show')
 
     const selectedSpieler = ref('');
     const selectedStrafe = ref('');

@@ -20,5 +20,5 @@
 
 <script setup lang="ts">
     const strafen = ref<any>([]);
-        strafen.value = await $fetch('/api/strafkisten-show')
+        strafen.value = await $fetch('/api/bier-show')
 </script>

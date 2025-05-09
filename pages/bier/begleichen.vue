@@ -34,19 +34,19 @@
 <script setup lang="ts">
 
     const kader = ref<any>([]);
-    kader.value = await $fetch('/api/strafkisten-spieler-show')
+    kader.value = await $fetch('/api/bier-spieler-show')
 
     let showDetails = ref<any>([]);
     showDetails.value = false;
 
     async function mitgenommen(spieler: any) {
-        const res = await $fetch('/api/strafkisten-mitgenommen', {
+        const res = await $fetch('/api/bier-mitgenommen', {
             method: "POST",
             body: {
                 spieler: spieler
             }
         }).then( async () => {
-            kader.value = await $fetch('/api/strafkisten-spieler-show')
+            kader.value = await $fetch('/api/bier-spieler-show')
         })
     }
     

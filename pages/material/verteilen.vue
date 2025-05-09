@@ -1,5 +1,6 @@
 <template>
-    <div class="p-4">
+    <div class="p-4" v-if="material.response == 'error'">Es müssen zuerst Spieler zum Training/Spieltag hinzugefügt werden</div>
+    <div class="p-4" v-if="material.response != 'error'">
         *Materialausgabe Spieltag*<br><br>
         *Flaschen* 🥤: @{{ material.flaschen[0].name }}<br><br>
         *Bälle* ⚽: @{{ material.bälle[0].name }}<br><br>
