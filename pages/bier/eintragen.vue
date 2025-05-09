@@ -8,9 +8,9 @@
                 </option>
             </select>
         </div>
-        <h2 class="text-lg font-bold mt-4">Strafe</h2>
+        <h2 class="text-lg font-bold mt-4">Grund</h2>
         <div class="mr-2 w-full">
-            <select class="dropdown p-2 w-full" v-model="selectedStrafe" @change="calculate">
+            <select class="dropdown p-2 w-full" v-model="selectedStrafe">
                 <option v-for="strafe in strafen?.strafen" :value="strafe">
                     {{ strafe.strafe }}
                 </option>
@@ -34,12 +34,9 @@
     const strafen = ref<any>([]);
     strafen.value = await $fetch('/api/strafkisten-show')
 
-    const betrag = ref(0);
-
     const selectedSpieler = ref('');
     const selectedStrafe = ref('');
 
-    let anzahl = 1;
     async function eintragen() {
         const res = await $fetch('/api/bier-eintragen', {
             method: "POST",
@@ -50,17 +47,6 @@
         }).then( async () => {
             kader.value = await $fetch('/api/kader-show')
         })
-    }
-
-    async function calculate() {
-        if(selectedStrafe.value.pro_x_text && selectedStrafe.value.pro_x_text == 'pro 5 min') {
-            betrag.value = selectedStrafe.value.wert_geld * anzahl / 5;
-        } else if (selectedStrafe.value.pro_x_text && selectedStrafe.value.pro_x_text == 'pro Teil') {
-            betrag.value = selectedStrafe.value.wert_geld * anzahl
-        } else {
-            betrag.value = selectedStrafe.value.wert_geld
-        }
-        
     }
 
 </script>
