@@ -210,7 +210,7 @@ INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (1, 0, 1);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (2, 0, 0);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (3, 0, 0);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (4, 0, 0);
-INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (5, 0, 1);
+INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (5, 0, 0);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (6, 5, 0);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (7, 0, 0);
 INSERT INTO `spieler_strafen` (`spielerId`, `geld`, `kiste`) VALUES (8, 15, 0);
