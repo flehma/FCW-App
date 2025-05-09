@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="flex items-center justify-between">  
-                        <div class="mr-2 p-2  w-[60px] font-semibold text-center rounded bg-blue-500">
+                        <div class="mr-2 p-2  w-[60px] font-semibold text-white text-center rounded bg-blue-500">
                             {{ row?.kiste }}<br>
                         </div>
                         <div>
@@ -36,7 +36,6 @@
     const kader = ref<any>([]);
     kader.value = await $fetch('/api/strafkisten-spieler-show')
 
-    const spielerInput = ref('');
     let showDetails = ref<any>([]);
     showDetails.value = false;
 
