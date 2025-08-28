@@ -87,7 +87,7 @@ INSERT INTO `kader` (`id`, `name`) VALUES (25, 'Sven Andresen');
 INSERT INTO `kader` (`id`, `name`) VALUES (26, 'Thies Freese');
 INSERT INTO `kader` (`id`, `name`) VALUES (27, 'Thomas Erichsen');
 INSERT INTO `kader` (`id`, `name`) VALUES (28, 'Thomas Schulz');
-INSERT INTO `kader` (`id`, `name`) VALUES (29, 'Tim Stroschein');
+INSERT INTO `kader` (`id`, `name`) VALUES (29, 'Tim Hinrichsen');
 INSERT INTO `kader` (`id`, `name`) VALUES (30, 'Timo Stroschein');
 INSERT INTO `kader` (`id`, `name`) VALUES (31, 'Tjark Stroschein');
 INSERT INTO `kader` (`id`, `name`) VALUES (32, 'Yannik Mahler');
@@ -149,7 +149,7 @@ INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`)
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (20, NULL, NULL, NULL, NULL);
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (21, NULL, NULL, NULL, NULL);
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (22, NULL, NULL, NULL, NULL);
-INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (23, NULL, NULL, NULL, NULL);
+INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (23, NULL, 1, NULL, NULL);
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (24, NULL, NULL, NULL, NULL);
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (25, NULL, NULL, NULL, NULL);
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (26, NULL, NULL, NULL, NULL);
