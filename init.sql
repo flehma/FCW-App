@@ -161,17 +161,19 @@ INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`)
 INSERT INTO `material` (`spielerId`, `flaschen`, `musikbox`, `bälle`, `jacken`) VALUES (32, NULL, NULL, NULL, NULL);
 
 INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (1, 'zu spät beim Training', 'pro 5 min', 2, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (2, 'zu spät beim Spiel', 'pro 5 min', 5, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (3, 'unentschuldigtes Fehlen beim Training', NULL, 10, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (2, 'zu spät beim Spiel', 'pro 5 min', 3, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (3, 'unentschuldigtes Fehlen beim Training', NULL, 15, NULL);
 INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (4, 'unentschuldigtes Fehlen beim Spiel', NULL, 25, 1);
 INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (5, 'unnötige gelbe Karte', NULL, 5, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (6, 'gelb-rote Karte nach unnötiger 1. gelben Karte', NULL, 15, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (7, 'gelb-rote Karte nach 2 unnötigen gelben Karten', NULL, 25, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (8, 'unnötige rote Karte', NULL, 50, 1);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (9, 'Sachen vergessen', 'pro Teil', 2, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (10, 'Handy klingelt während Besprechungen', NULL, 2, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (11, 'Vereinskleidung wird zu Spielen nicht getragen', 'pro Teil', 2, NULL);
-INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (12, 'Spielkleidung wird zum Training getragen', 'pro Teil', 2, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (6, 'unnötige gelb-rote Karte', NULL, 15, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (7, 'unnötige rote Karte', NULL, 50, 1);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (8, 'Sachen am Spieltag vergessen', 'pro Teil', NULL, 1);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (9, 'Material vergessen', 'pro Teil', 5, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (10, 'Kiste oder Softdrinks vergessen', NULL, NULL, 1);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (11, 'Während der Trainersprache am Handy', NULL, 2, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (12, 'Vereinskleidung wird zu Spielen nicht getragen', 'pro Teil', 2, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (13, 'Spielkleidung wird zum Training getragen', 'pro Teil', 2, NULL);
+INSERT INTO `strafen` (`id`, `strafe`, `pro_x_text`, `wert_geld`, `wert_kiste`) VALUES (14, 'Rauchen im Trikot', NULL, 2, NULL);
 
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (1, '1. mal Kapitän', 'TRUE');
 INSERT INTO `strafkisten` (`id`, `strafe`, `einmal`) VALUES (2, '1. Tor in Blau', 'TRUE');
