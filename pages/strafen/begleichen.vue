@@ -5,9 +5,7 @@
             
             <div class="" v-for="row in kader?.kader" :key="row.id">
                 <div class="p-3 rounded bg-slate-100 flex items-center justify-between">
-                    <div class="" @click="openDetails(row?.id)">
-                        <p class="font-semibold"> {{ row?.name }}</p>
-                    </div>
+                    <p class="font-semibold"> {{ row?.name }}</p>
 
                     <div class="flex items-center justify-between">  
                         <div class="mr-2 p-2  w-[60px] font-semibold text-white text-center rounded bg-blue-500">
