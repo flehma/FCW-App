@@ -13,6 +13,7 @@ export default defineEventHandler(async (event: any) => {
         }
         
         const [rows] = await connection.execute(`UPDATE spieler_strafen SET ${update} where spielerId = ${requestBody.spieler.id};`);
+        console.log('UPDATE spieler_strafen SET ${update} where spielerId = ${requestBody.spieler.id};')
         await connection.end();
         return {
             kader: rows
