@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
         console.log(requestBody)
         
         const connection = await getConnection();
-        const [rows] = await connection.execute(`UPDATE spieler_strafen SET geld = NULL WHERE spielerId = ${requestBody.spieler.id};`);
+        const [rows] = await connection.execute(`UPDATE spieler_strafen SET geld = 0 WHERE spielerId = ${requestBody.spieler.id};`);
         await connection.end();
         return {
             kader: rows
