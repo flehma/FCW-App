@@ -1,23 +1,31 @@
 import { getConnection } from '../utils/db.js';
 
 export default defineEventHandler(async (event: any) => {
-    try {
-        const requestBody = await readBody(event)
-        console.log(requestBody)
-        console.log("INSERT INTO strafkisten (strafe, einmal) VALUES ('" + requestBody.grund + "', '" + requestBody.once + "');")
-        const connection = await getConnection();
-        const [rows] = await connection.execute(
-            `INSERT INTO strafkisten (strafe, einmal) VALUES ('${requestBody.grund}', '${requestBody.once}')`
-        );
-        
-        await connection.end();
-        return {
-            kader: rows
-        };
-    } catch (error) {
-        console.error('Database error:', error);
-        return {
-            error: error.message
-        };
-    }
+  try {
+    // Body auslesen
+    const { strafe, einmal } = await readBody(event);
+
+    console.log("Neue Strafenkiste:", { strafe, einmal });
+
+    const connection = await getConnection();
+
+    // Insert mit Platzhaltern
+    const [result] = await connection.execute(
+      `INSERT INTO strafkisten (strafe, einmal) VALUES (?, ?)`,
+      [strafe, einmal] // einmal muss 'TRUE' oder 'FALSE' sein
+    );
+
+    await connection.end();
+
+    return {
+      success: true,
+      insertId: result.insertId
+    };
+  } catch (error) {
+    console.error('Database error:', error);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
 });
