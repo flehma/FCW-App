@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2">
+    <div class="p-2 max-w-md mx-auto">
         <h2 class="text-lg font-bold mt-4">Grund</h2>
         <div class="mr-2 w-full">
             <input type="text" v-model="grundInput" class="p-2 border rounded w-full"/>
@@ -16,16 +16,17 @@
                 Wiederholbar
             </label>
         </div>
+        
+        <div class="flex flex-row items-center mt-4">
+            <button @click="eintragen" class="mr-2 p-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-400">
+                Eintragen
+            </button>
+            <RouterLink to="/bier">
+                <button class="inline-flex items-center border border-blue-300 px-4 py-2 rounded-md text-blue-500 hover:bg-blue-50">Zurück</button>
+            </RouterLink>        
+        </div>
     </div>
 
-    <div class="flex flex-row items-center mt-4">
-        <button @click="eintragen" class="m-2 p-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-400">
-            Eintragen
-        </button>
-        <RouterLink to="/bier">
-            <button class="inline-flex items-center border border-blue-300 px-4 py-2 rounded-md text-blue-500 hover:bg-blue-50">Zurück</button>
-        </RouterLink>        
-    </div>
 
     <!-- Toast -->
     <transition name="fade">
