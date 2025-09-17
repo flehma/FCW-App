@@ -8,7 +8,7 @@ export default defineEventHandler(async (event: any) => {
         const [rows] = await connection.execute(`INSERT INTO kader (name) VALUES ("${requestBody.name}");`);
         await connection.execute(`INSERT INTO tunnel (spielerId, tunnel) VALUES ("${rows.insertId}", 0);`)
         await connection.execute(`INSERT INTO material (spielerId, flaschen, musikbox, bälle, jacken) VALUES ("${rows.insertId}",NULL,NULL,NULL,NULL);`)
-        await connection.execute(`INSERT INTO spieler_strafen (spielerId, geld, kiste) VALUES ("${rows.insertId}",NULL,NULL);`)
+        await connection.execute(`INSERT INTO spieler_strafen (spielerId, geld, kiste) VALUES ("${rows.insertId}",0,0);`)
         await connection.end();
         return {
             kader: rows

@@ -10,7 +10,10 @@
                 </div>
             </div>
         </div>
-        <div class="flex mt-2 flex-col items-center">
+        <div class="flex mt-2 flex-row items-center">
+            <RouterLink to="/bier/add">
+                <button class="mr-2 p-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-400">Hinzufügen</button>
+            </RouterLink>   
             <RouterLink to="/bier">
                 <button class="inline-flex items-center border border-blue-300 px-3 py-1.5 rounded-md text-blue-500 hover:bg-blue-50">Zurück</button>
             </RouterLink>        
