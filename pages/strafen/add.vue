@@ -59,13 +59,12 @@
       <button @click="eintragen" class="px-4 py-3 bg-blue-500 text-white rounded hover:bg-blue-400 flex-1">
         Eintragen
       </button>
-      <RouterLink to="/bier/katalog" class="flex-1">
-        <button class="w-full px-4 py-3 border border-blue-300 rounded-md text-blue-500 hover:bg-blue-50">
+      <RouterLink to="/strafen">
+        <button class="w-full px-4 py-3 border border-blue-300 rounded-md text-blue-500 hover:bg-blue-50 flex-1">
           Zurück
         </button>
       </RouterLink>
     </div>
-
     <!-- Toast -->
     <transition name="fade">
       <div v-if="toastMessage"
