@@ -10,6 +10,9 @@ export default defineNuxtConfig({
   },
   vite: {
     server: {
+      hmr: {
+        overlay: false
+      },
       allowedHosts: ['localhost', 'fcw-app.cloud']
     }
   }
