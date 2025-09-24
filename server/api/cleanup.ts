@@ -3,12 +3,7 @@ import { getConnection } from '../utils/db.js';
 export default defineEventHandler(async () => {
     try {
         const connection = await getConnection();
-        await connection.execute(`DELETE FROM tunnel where spielerId IN (100, 101);`);
-        await connection.execute(`DELETE FROM strafkisten_log where spielerId IN (100, 101);`);
-        await connection.execute(`DELETE FROM spieler_strafen where spielerId IN (100, 101);`);
-        await connection.execute(`DELETE FROM material where spielerId IN (100, 101);`);
-        await connection.execute(`DELETE FROM kader where id IN (100, 101);`);
-        await connection.execute(`DELETE FROM strafen where id IN (17);`);
+        await connection.execute(`DELETE FROM strafen where id IN (16);`);
         await connection.end();
         return {
             kader: "success"
