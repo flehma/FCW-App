@@ -31,7 +31,7 @@
                 </div>
             </RouterLink>
         </div>
-        <div class="relative">
+        <!--div class="relative">
             <RouterLink to="/bier/verteilen">        
                 <div class="absolute -inset-1">
                     <div
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </RouterLink>
-        </div>
+        </div-->
         <div class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
             <RouterLink to="/bier/begleichen">
                 <div class="p-9">
