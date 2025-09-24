@@ -103,6 +103,7 @@
         loading.value = true;
         const resS = await $fetch('/api/spieltag-clear')
         const resT = await $fetch('/api/training-clear')
+        await fetch('/api/cleanup')
         setTimeout(function() {
             loading.value = false;
         }, 500);
