@@ -16,19 +16,19 @@
     <div class="flex flex-row items-center space-x-4">
       <RouterLink
         to="/kader"
-        class="font-semibold px-3 py-1 rounded hover:bg-blue-500 transition"
+        class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition"
       >
         KADER
       </RouterLink>
       <RouterLink
         to="/spieltag"
-        class="font-semibold px-3 py-1 rounded hover:bg-blue-500 transition"
+        class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition"
       >
         SPIELTAG
       </RouterLink>
       <RouterLink
         to="/training"
-        class="font-semibold px-3 py-1 rounded hover:bg-blue-500 transition"
+        class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition"
       >
         TRAINING
       </RouterLink>
