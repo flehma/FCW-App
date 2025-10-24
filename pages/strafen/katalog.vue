@@ -10,7 +10,7 @@
       >
         <!-- Fixierter Löschbutton -->
         <div
-          class="absolute right-1 top-1 bottom-5 bg-red-500 text-white flex items-center justify-center w-[80px] h-[50px] font-bold z-0 rounded-lg cursor-pointer transition-colors duration-200 hover:bg-red-600"
+          class="absolute right-1 top-1 bottom-1 bg-red-500 text-white flex items-center justify-center w-[80px]  font-bold z-0 rounded-lg cursor-pointer transition-colors duration-200 hover:bg-red-600"
           @click="deleteStrafe(strafe)"
         >
           Löschen
