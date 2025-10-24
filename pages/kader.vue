@@ -20,9 +20,7 @@
 
     <!-- Kaderliste -->
     <div v-if="kader" class="flex flex-col gap-3 mt-6">
-      <div
-        v-for="row in kader?.kader"
-        :key="row.id"
+      <div v-for="row in sortedKader" :key="row.id"
         class="bg-slate-100 rounded-lg p-3 shadow hover:shadow-md transition-all duration-300"
       >
         <div class="flex items-center justify-between">
@@ -170,7 +168,7 @@
         <!-- Details Section -->
         <transition name="fade">
           <div
-            v-if="row?.showDetails"
+            v-if="isOpen(row?.id)"
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-2 ml-2 p-3 bg-blue-50 rounded-lg"
           >
             <table class="text-sm">
@@ -209,10 +207,23 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+
 const kader = ref<any>([]);
 kader.value = await $fetch("/api/kader-show");
 
 const spielerInput = ref("");
+
+// Geöffnete Details tracken unabhängig von Index
+const openDetailsSet = ref<Set<number>>(new Set());
+
+// Spieler alphabetisch sortiert (reaktiv)
+const sortedKader = computed(() => {
+  if (!kader.value?.kader) return [];
+  return [...kader.value.kader].sort((a, b) =>
+    a.name.localeCompare(b.name, "de", { sensitivity: "base" })
+  );
+});
 
 // Spieler hinzufügen
 async function addSpieler() {
@@ -251,10 +262,18 @@ async function trainingAddSpieler(spieler: any) {
   kader.value = await $fetch("/api/kader-show");
 }
 
-// Details ein-/ausklappen
-function openDetails(id: any) {
-  kader.value.kader[id - 1].showDetails =
-    !kader.value.kader[id - 1].showDetails;
+// Details ein-/ausklappen anhand Spieler-ID
+function openDetails(spielerId: number) {
+  if (openDetailsSet.value.has(spielerId)) {
+    openDetailsSet.value.delete(spielerId);
+  } else {
+    openDetailsSet.value.add(spielerId);
+  }
+}
+
+// Helper für Template
+function isOpen(spielerId: number) {
+  return openDetailsSet.value.has(spielerId);
 }
 </script>
 
