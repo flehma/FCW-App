@@ -10,7 +10,7 @@ export default defineEventHandler(async (event: any) => {
         let update = '1';
         if (requestBody.spieler.bälle > 0) update = 'bälle + 1'
 
-        const [rows] = await connection.execute(`UPDATE material SET bälle = ${update} where spielerId = ${requestBody.spieler.id};`);
+        const [rows] = await connection.execute(`UPDATE material SET bälle = ${update} where spielerId = ${requestBody.spieler};`);
         await connection.end();
         return {
             kader: rows

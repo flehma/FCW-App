@@ -2,7 +2,6 @@
   <div class="p-4">
     <h2 class="text-2xl font-bold mb-6 text-slate-700">Materialverwaltung</h2>
 
-    <!-- Materialgruppen dynamisch -->
     <div v-for="item in materialItems" :key="item.label" class="mb-5">
       <h3 class="text-lg font-semibold text-slate-700 mb-2">{{ item.label }}</h3>
 
@@ -12,16 +11,15 @@
           class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
         >
           <option disabled value="">-- Spieler auswählen --</option>
-          <option v-for="spieler in kader?.kader" :key="spieler.id" :value="spieler">
+          <option v-for="spieler in kader?.kader" :key="spieler.id" :value="spieler.id">
             {{ spieler.name }}
           </option>
         </select>
 
         <button
-          @click="item.action()"
+          @click="item.action(item.selected)"
           class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-lg hover:bg-blue-400 transition"
         >
-          <!-- dein Haken-Icon -->
           <svg
             class="w-6 h-6"
             viewBox="0 0 24 24"
@@ -41,7 +39,6 @@
       </div>
     </div>
 
-    <!-- Zurück Button -->
     <div class="flex justify-center mt-8">
       <RouterLink to="/material">
         <button
@@ -58,57 +55,27 @@
 const kader = ref<any>([]);
 kader.value = await $fetch("/api/kader-show");
 
-// einzelne Refs für Auswahl
-const selectedFlaschen = ref("");
-const selectedMusikbox = ref("");
-const selectedBälle = ref("");
-const selectedJacken = ref("");
+// Reaktives Array für Items
+const materialItems = ref([
+  { label: "Flaschen", selected: "", api: "/api/material-add-flaschen" },
+  { label: "Musikbox", selected: "", api: "/api/material-add-musikbox" },
+  { label: "Bälle", selected: "", api: "/api/material-add-baelle" },
+  { label: "Jacken", selected: "", api: "/api/material-add-jacken" },
+]);
 
-// dynamische Materialliste
-const materialItems = [
-  {
-    label: "Flaschen",
-    selected: selectedFlaschen,
-    action: async () => {
-      await $fetch("/api/material-add-flaschen", {
-        method: "POST",
-        body: { spieler: selectedFlaschen.value },
-      });
-      kader.value = await $fetch("/api/kader-show");
-    },
-  },
-  {
-    label: "Musikbox",
-    selected: selectedMusikbox,
-    action: async () => {
-      await $fetch("/api/material-add-musikbox", {
-        method: "POST",
-        body: { spieler: selectedMusikbox.value },
-      });
-      kader.value = await $fetch("/api/kader-show");
-    },
-  },
-  {
-    label: "Bälle",
-    selected: selectedBälle,
-    action: async () => {
-      await $fetch("/api/material-add-baelle", {
-        method: "POST",
-        body: { spieler: selectedBälle.value },
-      });
-      kader.value = await $fetch("/api/kader-show");
-    },
-  },
-  {
-    label: "Jacken",
-    selected: selectedJacken,
-    action: async () => {
-      await $fetch("/api/material-add-jacken", {
-        method: "POST",
-        body: { spieler: selectedJacken.value },
-      });
-      kader.value = await $fetch("/api/kader-show");
-    },
-  },
-];
+// Einheitliche Action-Funktion
+async function handleAction(api: string, spielerId: string) {
+  if (!spielerId) return;
+  console.log(spielerId)
+  await $fetch(api, {
+    method: "POST",
+    body: { spieler: spielerId },
+  });
+  kader.value = await $fetch("/api/kader-show");
+}
+
+// jedem Item seine Action mitgeben
+materialItems.value.forEach((item) => {
+  item.action = (spielerId: string) => handleAction(item.api, spielerId);
+});
 </script>
