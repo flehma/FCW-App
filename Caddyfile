@@ -1,0 +1,3 @@
+fcw-app.cloud {
+    reverse_proxy fcw-app:3000
+}
