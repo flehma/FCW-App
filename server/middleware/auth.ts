@@ -4,6 +4,8 @@ export default defineEventHandler(async (event) => {
   // Login-Route immer erlauben
   if (url.pathname === '/api/auth/login') return;
 
+  if (url.pathname.startsWith('/.well-known/')) return;
+
   // Nur API-Routen schützen
   if (!url.pathname.startsWith('/api/')) return;
 
