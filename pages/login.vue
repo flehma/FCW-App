@@ -75,7 +75,7 @@ async function login() {
       method: 'POST',
       body: { username: username.value, password: password.value },
     });
-    window.location.href = '/';
+    window.location.replace('/');
   } catch (e: any) {
     error.value = e?.data?.statusMessage || 'Anmeldung fehlgeschlagen.';
   } finally {
