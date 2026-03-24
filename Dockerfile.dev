@@ -11,4 +11,4 @@ RUN npm ci
 # --- Run Stage ---
 FROM base AS development
 COPY --from=build /src/node_modules /src/node_modules
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "dev", "--", "--host"]
