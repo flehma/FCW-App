@@ -4,7 +4,7 @@
     <div class="flex items-center space-x-3">
       <RouterLink to="/" class="flex items-center space-x-2">
         <img
-          src="/fcw_logo.PNG"
+          :src="logo"
           alt="FC Wiesharde Logo"
           class="h-10 w-auto bg-white rounded-md p-1 shadow-sm"
         />
@@ -33,8 +33,30 @@
         TRAINING
       </RouterLink>
     </div>
+
+    <!-- Nutzer + Logout -->
+    <div class="flex items-center space-x-3">
+      <span class="text-sm text-blue-200 hidden sm:inline">
+        {{ session?.user?.username }}
+      </span>
+      <button
+        class="bg-white text-blue-600 font-semibold px-3 py-1 rounded hover:bg-blue-100 transition text-sm"
+        @click="logout"
+      >
+        Logout
+      </button>
+    </div>
   </nav>
 </template>
 
 <script setup lang="ts">
+const { session, clear } = useUserSession();
+
+const logo = '/fcw_logo.PNG';
+
+async function logout() {
+  await $fetch('/api/auth/logout', { method: 'POST' });
+  await clear();
+  await navigateTo('/login');
+}
 </script>
