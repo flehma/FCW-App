@@ -1,0 +1,8 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    entrypoint: ["echo", "caddy disabled locally"]
+    restart: "no"
+  fcw-app:
+    ports:
+      - "80:3000"
