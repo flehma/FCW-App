@@ -77,7 +77,37 @@
                     </div>
                 </RouterLink>
             </div>
-            <div @click="clear" class="overflow-hidden bg-white shadow-md rounded-xl">
+            <div class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
+                <RouterLink to="/kasse">
+                    <div class="p-9">
+                        <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 8C2 7.44772 2.44772 7 3 7H21C21.5523 7 22 7.44772 22 8V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V8Z" stroke="#000000" stroke-width="2"/>
+                            <path d="M6 11H8M16 11H18M2 11H22M6 4H18" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="14" r="2" stroke="#000000" stroke-width="2"/>
+                        </svg>
+                        <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Kasse</h3>
+                        <p class="mt-6 text-base text-gray-600">Hier werden die Mitgliedsbeiträge der Spieler für das Sommer- und Winter-Halbjahr verwaltet.</p>
+                    </div>
+                </RouterLink>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-1">
+                    <div class="w-full h-full rotate-180 opacity-30 blur-lg filter bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600"></div>
+                </div>
+                <RouterLink to="/feed">
+                    <div class="relative overflow-hidden bg-white shadow-md rounded-xl h-full cursor-pointer">
+                        <div class="p-9">
+                            <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 11C4 7.22876 4 5.34315 5.17157 4.17157C6.34315 3 8.22876 3 12 3H14C17.7712 3 19.6569 3 20.8284 4.17157C22 5.34315 22 7.22876 22 11V13C22 16.7712 22 18.6569 20.8284 19.8284C19.6569 21 17.7712 21 14 21H12C8.22876 21 6.34315 21 5.17157 19.8284C4 18.6569 4 16.7712 4 13V11Z" stroke="#000000" stroke-width="2"/><path d="M9 8H15M9 12H15M9 16H12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M2 9L2 15" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">News-Feed</h3>
+                            <p class="mt-6 text-base text-gray-600">Alle aktuellen Ereignisse – Strafen, Bier und Material auf einen Blick.</p>
+                        </div>
+                    </div>
+                </RouterLink>
+            </div>
+            <div @click="clear" class="overflow-hidden bg-white shadow-md rounded-xl cursor-pointer">
                 <div v-if="!loading" class="p-9">
                     <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 9H22M19 14H22M19 19H21M16 6L15.1991 18.0129C15.129 19.065 15.0939 19.5911 14.8667 19.99C14.6666 20.3412 14.3648 20.6235 14.0011 20.7998C13.588 21 13.0607 21 12.0062 21H7.99377C6.93927 21 6.41202 21 5.99889 20.7998C5.63517 20.6235 5.33339 20.3412 5.13332 19.99C4.90607 19.5911 4.871 19.065 4.80086 18.0129L4 6M2 6H18M14 6L13.7294 5.18807C13.4671 4.40125 13.3359 4.00784 13.0927 3.71698C12.8779 3.46013 12.6021 3.26132 12.2905 3.13878C11.9376 3 11.523 3 10.6936 3H9.30643C8.47705 3 8.06236 3 7.70951 3.13878C7.39792 3.26132 7.12208 3.46013 6.90729 3.71698C6.66405 4.00784 6.53292 4.40125 6.27064 5.18807L6 6M12 10V17M8 10L7.99995 16.9998" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

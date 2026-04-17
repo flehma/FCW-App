@@ -59,6 +59,22 @@ CREATE TABLE IF NOT EXISTS strafkisten_log (
     FOREIGN KEY (strafkistenId) REFERENCES strafkisten(id)
 );
 
+CREATE TABLE IF NOT EXISTS kasse (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  spieler_id INT NOT NULL,
+  halbjahr ENUM('sommer', 'winter') NOT NULL,
+  bezahlt BOOLEAN DEFAULT FALSE,
+  UNIQUE KEY unique_spieler_halbjahr (spieler_id, halbjahr)
+);
+
+CREATE TABLE IF NOT EXISTS activity_log (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  typ ENUM('strafe', 'bier', 'material') NOT NULL,
+  spieler_name VARCHAR(255) NOT NULL,
+  beschreibung VARCHAR(500) NOT NULL,
+  erstellt_am DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 INSERT INTO `kader` (`id`, `name`) VALUES (1, 'Abdullah Alsalloum');
 INSERT INTO `kader` (`id`, `name`) VALUES (2, 'Amer Ramadhan Omar');
 INSERT INTO `kader` (`id`, `name`) VALUES (3, 'Andy Schulz');

@@ -101,6 +101,7 @@ async function eintragen() {
       spieler: selectedSpieler.value,
       geld: betrag.value,
       kiste: selectedStrafe.value?.wert_kiste,
+      strafeName: selectedStrafe.value?.strafe,
     },
   });
 
