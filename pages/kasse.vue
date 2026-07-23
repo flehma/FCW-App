@@ -16,7 +16,7 @@
 
     <!-- Sommer-Halbjahr -->
     <div class="mb-8">
-      <h2 class="text-lg font-bold mb-3">🌞 Sommer-Halbjahr (25€)</h2>
+      <h2 class="text-lg font-bold mb-3">🌞 Sommer-Halbjahr ({{ beitragSommer }}€)</h2>
       <div class="space-y-2">
         <div
           v-for="eintrag in sommer"
@@ -39,7 +39,7 @@
 
     <!-- Winter-Halbjahr -->
     <div>
-      <h2 class="text-lg font-bold mb-3">❄️ Winter-Halbjahr (25€)</h2>
+      <h2 class="text-lg font-bold mb-3">❄️ Winter-Halbjahr ({{ beitragWinter }}€)</h2>
       <div class="space-y-2">
         <div
           v-for="eintrag in winter"
@@ -64,20 +64,27 @@
 
 <script setup lang="ts">
 const eintraege = ref<any[]>([]);
+const einstellungen = ref<Record<string, string>>({});
+
+const beitragSommer = computed(() => Number(einstellungen.value.kassenbeitrag_sommer ?? 25));
+const beitragWinter = computed(() => Number(einstellungen.value.kassenbeitrag_winter ?? 25));
 
 const sommer = computed(() => eintraege.value.filter(e => e.halbjahr === 'sommer'));
 const winter = computed(() => eintraege.value.filter(e => e.halbjahr === 'winter'));
 
 const bezahltGesamt = computed(() =>
-  eintraege.value.filter(e => e.bezahlt).length * 25
+  sommer.value.filter(e => e.bezahlt).length * beitragSommer.value +
+  winter.value.filter(e => e.bezahlt).length * beitragWinter.value
 );
 const offenGesamt = computed(() =>
-  eintraege.value.filter(e => !e.bezahlt).length * 25
+  sommer.value.filter(e => !e.bezahlt).length * beitragSommer.value +
+  winter.value.filter(e => !e.bezahlt).length * beitragWinter.value
 );
 
 async function laden() {
   await $fetch('/api/kasse-init');
   eintraege.value = await $fetch('/api/kasse-show') as any[];
+  einstellungen.value = await $fetch('/api/einstellungen-show') as Record<string, string>;
 }
 
 async function toggle(spieler_id: number, halbjahr: string) {

@@ -1,3 +1,13 @@
+erste.fcw-app.cloud {
+    reverse_proxy fcw-app-1:3000
+}
+
+zweite.fcw-app.cloud {
+    reverse_proxy fcw-app-2:3000
+}
+
+# Alte Domain bleibt erreichbar und zeigt weiter auf die 2. Mannschaft,
+# damit vorhandene Lesezeichen/Homescreen-Links nicht brechen.
 fcw-app.cloud {
-    reverse_proxy fcw-app:3000
+    reverse_proxy fcw-app-2:3000
 }

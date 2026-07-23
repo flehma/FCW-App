@@ -14,37 +14,71 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
-      - fcw-app
+      - fcw-app-1
+      - fcw-app-2
 
-  fcw-app:
+  # --- 1. Mannschaft ---
+  fcw-app-1:
     build: .
-    container_name: fcw-app
+    container_name: fcw-app-1
     restart: always
     env_file: ".env"
     environment:
-      - DATABASE_HOST=mariadb
+      - DATABASE_HOST=mariadb-1
       - DATABASE_PORT=3306
-      - DATABASE_NAME=${DATABASE_NAME}
-      - DATABASE_USER=${DATABASE_USER}
-      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME_ERSTE}
+      - DATABASE_USER=${DATABASE_USER_ERSTE}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD_ERSTE}
     depends_on:
-      - mariadb
+      - mariadb-1
 
-  mariadb:
+  mariadb-1:
     image: mariadb:10.11
-    container_name: mariadb
+    container_name: mariadb-1
     restart: always
     env_file: ".env"
     environment:
-      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${DATABASE_NAME}
-      - MYSQL_USER=${DATABASE_USER}
-      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD_ERSTE}
+      - MYSQL_DATABASE=${DATABASE_NAME_ERSTE}
+      - MYSQL_USER=${DATABASE_USER_ERSTE}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD_ERSTE}
     volumes:
+      - mariadb_data_erste:/var/lib/mysql
+      - ./init-erste.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # --- 2. Mannschaft (bisherige Produktivinstanz) ---
+  fcw-app-2:
+    build: .
+    container_name: fcw-app-2
+    restart: always
+    env_file: ".env"
+    environment:
+      - DATABASE_HOST=mariadb-2
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=${DATABASE_NAME_ZWEITE}
+      - DATABASE_USER=${DATABASE_USER_ZWEITE}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD_ZWEITE}
+    depends_on:
+      - mariadb-2
+
+  mariadb-2:
+    image: mariadb:10.11
+    container_name: mariadb-2
+    restart: always
+    env_file: ".env"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD_ZWEITE}
+      - MYSQL_DATABASE=${DATABASE_NAME_ZWEITE}
+      - MYSQL_USER=${DATABASE_USER_ZWEITE}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD_ZWEITE}
+    volumes:
+      # WICHTIG: bestehendes Volume "mariadb_data" weiterverwenden,
+      # damit die Daten der bisherigen Produktivinstanz erhalten bleiben!
       - mariadb_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init-zweite.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   mariadb_data:
+  mariadb_data_erste:
   caddy_data:
   caddy_config:
