@@ -29,6 +29,7 @@ services:
       - DATABASE_NAME=${DATABASE_NAME_ERSTE}
       - DATABASE_USER=${DATABASE_USER_ERSTE}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD_ERSTE}
+      - AUTH_USERS=${AUTH_USERS_ERSTE}
     depends_on:
       - mariadb-1
 
@@ -58,6 +59,7 @@ services:
       - DATABASE_NAME=${DATABASE_NAME_ZWEITE}
       - DATABASE_USER=${DATABASE_USER_ZWEITE}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD_ZWEITE}
+      - AUTH_USERS=${AUTH_USERS_ZWEITE}
     depends_on:
       - mariadb-2
 
