@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 sm:p-6 max-w-md mx-auto h-screen overflow-auto">
-    <h2 class="text-lg font-bold mb-4">Neue Strafe hinzufügen</h2>
+    <h2 class="text-lg font-bold mb-4">{{ editId ? 'Strafe bearbeiten' : 'Neue Strafe hinzufügen' }}</h2>
 
     <!-- Strafe -->
     <div class="mb-3">
@@ -57,7 +57,7 @@
     <!-- Buttons -->
     <div class="flex justify-center gap-4 mt-6">
       <button @click="eintragen" class="px-4 py-3 bg-blue-500 text-white rounded hover:bg-blue-400 flex-1">
-        Eintragen
+        {{ editId ? 'Speichern' : 'Eintragen' }}
       </button>
       <RouterLink to="/strafen">
         <button class="w-full px-4 py-3 border border-blue-300 rounded-md text-blue-500 hover:bg-blue-50 flex-1">
@@ -78,16 +78,32 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+// Edit-Modus, wenn ?id=<strafeId> in der URL steht (gleiche Oberfläche wie beim Hinzufügen, nur vorausgefüllt)
+const editId = route.query.id ? Number(route.query.id) : null
 
 const strafe = ref('')
 const proXText = ref<string|null>(null)
 const wertGeld = ref<number|null>(null)
 const wertKiste = ref<number|null>(null)
 
+if (editId) {
+  const data = await $fetch('/api/strafen-get', { query: { id: editId } })
+  const s = (data as any)?.strafe
+  if (s) {
+    strafe.value = s.strafe ?? ''
+    proXText.value = s.pro_x_text ?? null
+    wertGeld.value = s.wert_geld ?? null
+    wertKiste.value = s.wert_kiste ?? null
+  }
+}
+
 const toastMessage = ref('')
 const toastType = ref<'success' | 'error'>('success')
-const router = useRouter()
 
 function showToast(message: string, type: 'success' | 'error' = 'success') {
   toastMessage.value = message
@@ -99,17 +115,31 @@ function showToast(message: string, type: 'success' | 'error' = 'success') {
 
 async function eintragen() {
   try {
-    await $fetch('/api/strafen-add-strafe', {
-      method: "POST",
-      body: {
-        strafe: strafe.value,
-        pro_x_text: proXText.value,
-        wert_geld: wertGeld.value,
-        wert_kiste: wertKiste.value
-      }
-    })
+    if (editId) {
+      await $fetch('/api/strafen-update', {
+        method: "POST",
+        body: {
+          id: editId,
+          strafe: strafe.value,
+          pro_x_text: proXText.value,
+          wert_geld: wertGeld.value,
+          wert_kiste: wertKiste.value
+        }
+      })
+      showToast("Strafe erfolgreich aktualisiert!", "success")
+    } else {
+      await $fetch('/api/strafen-add-strafe', {
+        method: "POST",
+        body: {
+          strafe: strafe.value,
+          pro_x_text: proXText.value,
+          wert_geld: wertGeld.value,
+          wert_kiste: wertKiste.value
+        }
+      })
+      showToast("Strafe erfolgreich gespeichert!", "success")
+    }
 
-    showToast("Strafe erfolgreich gespeichert!", "success")
     setTimeout(() => {
       router.push('/strafen/katalog')
     }, 2000)

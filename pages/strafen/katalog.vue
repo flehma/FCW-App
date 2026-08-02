@@ -37,13 +37,23 @@
         class="relative overflow-hidden rounded-lg"
         :class="{ 'shadow-lg ring-2 ring-blue-300 z-10': draggingIndex === index }"
       >
-        <!-- Fixierter Löschbutton (nur außerhalb des Editier-Modus swipebar) -->
+        <!-- Fixierte Aktions-Buttons (nur außerhalb des Reihenfolge-Editier-Modus swipebar) -->
         <div
           v-if="!editMode"
-          class="absolute right-1 top-1 bottom-1 bg-red-500 text-white flex items-center justify-center w-[80px]  font-bold z-0 rounded-lg cursor-pointer transition-colors duration-200 hover:bg-red-600"
-          @click="deleteStrafe(strafe)"
+          class="absolute right-1 top-1 bottom-1 flex z-0 rounded-lg overflow-hidden"
         >
-          Löschen
+          <RouterLink
+            :to="`/strafen/add?id=${strafe.id}`"
+            class="flex items-center justify-center w-[80px] bg-blue-500 text-white text-sm font-bold hover:bg-blue-600 transition-colors"
+          >
+            Bearbeiten
+          </RouterLink>
+          <div
+            class="flex items-center justify-center w-[80px] bg-red-500 text-white text-sm font-bold cursor-pointer hover:bg-red-600 transition-colors"
+            @click="deleteStrafe(strafe)"
+          >
+            Löschen
+          </div>
         </div>
 
         <!-- Swipebarer / bzw. im Editier-Modus fixierter Bereich -->
@@ -58,7 +68,7 @@
           @mouseup="endSwipe(strafe, true)"
           @mouseleave="endSwipe(strafe, true)"
         >
-          <!-- Drag-Handle im Editier-Modus -->
+          <!-- Drag-Handle im Reihenfolge-Editier-Modus -->
           <span
             v-if="editMode"
             class="text-slate-400 text-lg leading-none cursor-grab active:cursor-grabbing touch-none select-none pl-3"
@@ -112,13 +122,15 @@ const { editMode, toggleEditMode: toggleEditModeBase, draggingIndex, setRowEl, o
 );
 
 function toggleEditMode() {
-  // offene Swipes schließen, bevor in den Editier-Modus gewechselt wird
+  // offene Swipes schließen, bevor in den Reihenfolge-Editier-Modus gewechselt wird
   liste.value.forEach((s) => (s.offset = 0));
   activeSwipe = null;
   toggleEditModeBase();
 }
 
-// Swipe Handling
+// Swipe Handling (Löschen + Bearbeiten, max. 2 Buttons à 80px = 160px)
+const SWIPE_MAX = -160;
+const SWIPE_THRESHOLD = -80;
 let startX = 0;
 let isDragging = false;
 let activeSwipe: any = null;
@@ -145,16 +157,16 @@ function moveSwipe(strafe: any, e: TouchEvent | MouseEvent, mouse = false) {
     ? (e as MouseEvent).clientX
     : (e as TouchEvent).touches[0].clientX;
   const diff = currentX - startX;
-  // Nur nach links, max -100 px
-  strafe.offset = Math.max(-100, Math.min(0, diff));
+  // Nur nach links, max SWIPE_MAX px
+  strafe.offset = Math.max(SWIPE_MAX, Math.min(0, diff));
 }
 
 function endSwipe(strafe: any, mouse = false) {
   if (editMode.value || !isDragging) return;
   isDragging = false;
   // Wenn weit genug gewischt → offen lassen
-  if (strafe.offset < -50) {
-    strafe.offset = -100;
+  if (strafe.offset < SWIPE_THRESHOLD) {
+    strafe.offset = SWIPE_MAX;
   } else {
     strafe.offset = 0;
   }
