@@ -10,10 +10,16 @@ export default defineEventHandler(async (event: any) => {
     // DB-Verbindung aufbauen
     const connection = await getConnection();
 
+    // Neue Strafe ans Ende der Reihenfolge anhängen
+    const [maxRows] = await connection.execute(
+      `SELECT COALESCE(MAX(reihenfolge), 0) AS maxReihenfolge FROM strafen`
+    ) as any;
+    const naechsteReihenfolge = maxRows[0].maxReihenfolge + 1;
+
     // Insert mit Platzhaltern, um SQL-Injection zu vermeiden
     const [result] = await connection.execute(
-      `INSERT INTO strafen (strafe, pro_x_text, wert_geld, wert_kiste) VALUES (?, ?, ?, ?)`,
-      [strafe, pro_x_text, wert_geld, wert_kiste]
+      `INSERT INTO strafen (strafe, pro_x_text, wert_geld, wert_kiste, reihenfolge) VALUES (?, ?, ?, ?, ?)`,
+      [strafe, pro_x_text, wert_geld, wert_kiste, naechsteReihenfolge]
     );
 
     await connection.end();

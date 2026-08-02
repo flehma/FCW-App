@@ -9,10 +9,16 @@ export default defineEventHandler(async (event: any) => {
 
     const connection = await getConnection();
 
+    // Neuen Grund ans Ende der Reihenfolge anhängen
+    const [maxRows] = await connection.execute(
+      `SELECT COALESCE(MAX(reihenfolge), 0) AS maxReihenfolge FROM strafkisten`
+    ) as any;
+    const naechsteReihenfolge = maxRows[0].maxReihenfolge + 1;
+
     // Insert mit Platzhaltern
     const [result] = await connection.execute(
-      `INSERT INTO strafkisten (strafe, einmal) VALUES (?, ?)`,
-      [strafe, einmal] // einmal muss 'TRUE' oder 'FALSE' sein
+      `INSERT INTO strafkisten (strafe, einmal, reihenfolge) VALUES (?, ?, ?)`,
+      [strafe, einmal, naechsteReihenfolge] // einmal muss 'TRUE' oder 'FALSE' sein
     );
 
     await connection.end();

@@ -3,7 +3,7 @@ import { getConnection } from '../utils/db.js';
 export default defineEventHandler(async () => {
     try {
         const connection = await getConnection();
-        const [rows] = await connection.execute('SELECT * FROM strafkisten');
+        const [rows] = await connection.execute('SELECT * FROM strafkisten ORDER BY reihenfolge ASC, id ASC');
         return {
             strafen: rows
         };
