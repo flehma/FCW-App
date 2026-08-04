@@ -86,6 +86,11 @@ CREATE TABLE IF NOT EXISTS einstellungen (
 INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kassenbeitrag_sommer', '25');
 INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kassenbeitrag_winter', '25');
 
+-- 2. Mannschaft: bisheriges Verhalten (Training + Spieltag werden aktiv befüllt,
+-- "Aufräumen" leert beides). 'opt_in' ist zwar der Standard, wird hier aber
+-- explizit gesetzt, siehe composables/useKaderModus.ts
+INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kader_modus', 'opt_in');
+
 -- Kader: bewusst leer (Reset am 23.07.2026), wird neu befuellt.
 
 -- Strafkatalog bleibt wie bisher

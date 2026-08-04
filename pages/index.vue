@@ -13,7 +13,11 @@
                                 <path id="Path_98" data-name="Path 98" d="M-21,2a2,2,0,0,0-2-2,2,2,0,0,0-2,2,2,2,0,0,0,2,2A2,2,0,0,0-21,2Zm-2,1a1,1,0,0,1-1-1,1,1,0,0,1,1-1,1,1,0,0,1,1,1A1,1,0,0,1-23,3Zm10-1a2,2,0,0,0-2-2,2,2,0,0,0-2,2,2,2,0,0,0,2,2A2,2,0,0,0-13,2Zm-2,1a1,1,0,0,1-1-1,1,1,0,0,1,1-1,1,1,0,0,1,1,1A1,1,0,0,1-15,3Zm1.5,1h-3a2.493,2.493,0,0,0-2.027,1.048A2.95,2.95,0,0,0-19,5a2.95,2.95,0,0,0-.473.048A2.493,2.493,0,0,0-21.5,4h-3A2.5,2.5,0,0,0-27,6.5,1.5,1.5,0,0,0-25.5,8H-22a3,3,0,0,0,3,3,3,3,0,0,0,3-3h3.5A1.5,1.5,0,0,0-11,6.5,2.5,2.5,0,0,0-13.5,4ZM-17,8a2,2,0,0,1-2,2,2,2,0,0,1-2-2,2,2,0,0,1,2-2A2,2,0,0,1-17,8Zm-8.5-1a.5.5,0,0,1-.5-.5A1.5,1.5,0,0,1-24.5,5h3a1.491,1.491,0,0,1,1.02.406A3,3,0,0,0-21.816,7Zm13,0h-3.684A3,3,0,0,0-17.52,5.406,1.491,1.491,0,0,1-16.5,5h3A1.5,1.5,0,0,1-12,6.5.5.5,0,0,1-12.5,7ZM-25,14.5A1.5,1.5,0,0,0-23.5,16h9A1.5,1.5,0,0,0-13,14.5,3.5,3.5,0,0,0-16.5,11h-5A3.5,3.5,0,0,0-25,14.5Zm8.5-2.5A2.5,2.5,0,0,1-14,14.5a.5.5,0,0,1-.5.5h-9a.5.5,0,0,1-.5-.5A2.5,2.5,0,0,1-21.5,12Z" transform="translate(27)"/>
                             </svg>
                             <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Kader</h3>
-                            <p class="mt-6 text-base text-gray-600">Hier kann der Kader verwaltet werden, sowie Spieler zum Training und zu Spielen hinzugefügt werden.</p>
+                            <p class="mt-6 text-base text-gray-600">
+                                {{ kaderModus === 'opt_out'
+                                    ? 'Hier kann der Kader verwaltet werden, sowie Spieler vom Spieltag entfernt werden.'
+                                    : 'Hier kann der Kader verwaltet werden, sowie Spieler zum Training und zu Spielen hinzugefügt werden.' }}
+                            </p>
                         </div>
                     </div>
                 </RouterLink>
@@ -112,8 +116,12 @@
                     <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 9H22M19 14H22M19 19H21M16 6L15.1991 18.0129C15.129 19.065 15.0939 19.5911 14.8667 19.99C14.6666 20.3412 14.3648 20.6235 14.0011 20.7998C13.588 21 13.0607 21 12.0062 21H7.99377C6.93927 21 6.41202 21 5.99889 20.7998C5.63517 20.6235 5.33339 20.3412 5.13332 19.99C4.90607 19.5911 4.871 19.065 4.80086 18.0129L4 6M2 6H18M14 6L13.7294 5.18807C13.4671 4.40125 13.3359 4.00784 13.0927 3.71698C12.8779 3.46013 12.6021 3.26132 12.2905 3.13878C11.9376 3 11.523 3 10.6936 3H9.30643C8.47705 3 8.06236 3 7.70951 3.13878C7.39792 3.26132 7.12208 3.46013 6.90729 3.71698C6.66405 4.00784 6.53292 4.40125 6.27064 5.18807L6 6M12 10V17M8 10L7.99995 16.9998" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">Aufräumen</h3>
-                    <p class="mt-6 text-base text-gray-600">Hier können die Spieler für den Spieltag, sowie das Training entfernt werden.</p>
+                    <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">{{ kaderModus === 'opt_out' ? 'Kader füllen' : 'Aufräumen' }}</h3>
+                    <p class="mt-6 text-base text-gray-600">
+                        {{ kaderModus === 'opt_out'
+                            ? 'Hier wird der Spieltag-Kader wieder mit allen Spielern befüllt.'
+                            : 'Hier können die Spieler für den Spieltag, sowie das Training entfernt werden.' }}
+                    </p>
                 </div>
                 <div v-if="loading" class="mt-[108px] ml-[157px]">
                     <div role="status">
@@ -129,11 +137,22 @@
 <script setup lang="ts">
     const loading = ref('');
     loading.value = false;
+
+    const { kaderModus, ladeKaderModus } = useKaderModus();
+    await ladeKaderModus();
+
     async function clear() {
         loading.value = true;
-        const resS = await $fetch('/api/spieltag-clear')
-        const resT = await $fetch('/api/training-clear')
-        await fetch('/api/cleanup')
+        if (kaderModus.value === 'opt_out') {
+            // 1. Mannschaft: Spieltag-Kader wieder mit allen Spielern befüllen,
+            // kein Training vorhanden.
+            await $fetch('/api/spieltag-fill');
+        } else {
+            // 2. Mannschaft: bisheriges Verhalten - Training und Spieltag leeren.
+            await $fetch('/api/spieltag-clear');
+            await $fetch('/api/training-clear');
+        }
+        await fetch('/api/cleanup');
         setTimeout(function() {
             loading.value = false;
         }, 500);

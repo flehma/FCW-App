@@ -83,8 +83,12 @@ CREATE TABLE IF NOT EXISTS einstellungen (
     `value` VARCHAR(255)
 );
 
-INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kassenbeitrag_sommer', '25');
-INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kassenbeitrag_winter', '25');
+INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kassenbeitrag_sommer', '30');
+INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kassenbeitrag_winter', '30');
+
+-- 1. Mannschaft: kein Training, Spieler werden vom (standardmäßig vollen)
+-- Spieltag-Kader entfernt statt hinzugefügt. Siehe composables/useKaderModus.ts
+INSERT INTO `einstellungen` (`key`, `value`) VALUES ('kader_modus', 'opt_out');
 
 -- Kader: bewusst leer, wird von euch befuellt.
 

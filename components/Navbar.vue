@@ -15,7 +15,7 @@
       <div class="hidden md:flex flex-row items-center space-x-4">
         <RouterLink to="/kader" class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition">KADER</RouterLink>
         <RouterLink to="/spieltag" class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition">SPIELTAG</RouterLink>
-        <RouterLink to="/training" class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition">TRAINING</RouterLink>
+        <RouterLink v-if="kaderModus !== 'opt_out'" to="/training" class="font-semibold px-1 py-1 rounded hover:bg-blue-500 transition">TRAINING</RouterLink>
       </div>
 
       <!-- Desktop Logout -->
@@ -44,7 +44,7 @@
     <div v-if="menuOpen" class="md:hidden px-4 pb-4 flex flex-col space-y-2">
       <RouterLink to="/kader" class="font-semibold px-2 py-2 rounded hover:bg-blue-500 transition" @click="menuOpen = false">KADER</RouterLink>
       <RouterLink to="/spieltag" class="font-semibold px-2 py-2 rounded hover:bg-blue-500 transition" @click="menuOpen = false">SPIELTAG</RouterLink>
-      <RouterLink to="/training" class="font-semibold px-2 py-2 rounded hover:bg-blue-500 transition" @click="menuOpen = false">TRAINING</RouterLink>
+      <RouterLink v-if="kaderModus !== 'opt_out'" to="/training" class="font-semibold px-2 py-2 rounded hover:bg-blue-500 transition" @click="menuOpen = false">TRAINING</RouterLink>
       <hr class="border-blue-500" />
       <div class="flex items-center justify-between">
         <span class="text-sm text-blue-200">{{ session?.user?.username }}</span>
@@ -63,6 +63,9 @@
 const { session, clear } = useUserSession();
 const logo = '/fcw_logo.PNG';
 const menuOpen = ref(false);
+
+const { kaderModus, ladeKaderModus } = useKaderModus();
+await ladeKaderModus();
 
 async function logout() {
   await $fetch('/api/auth/logout', { method: 'POST' });

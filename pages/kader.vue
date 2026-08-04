@@ -34,7 +34,8 @@
 
           <!-- Action-Buttons -->
           <div class="flex items-center space-x-2 min-w-[184px] justify-end">
-            <!-- Training Button -->
+            <!-- Training Button (entfällt komplett im opt_out-Modus, z.B. 1. Mannschaft) -->
+            <template v-if="kaderModus !== 'opt_out'">
             <button
               v-if="!row?.training"
               @click="trainingAddSpieler(row)"
@@ -73,6 +74,7 @@
                 />
               </svg>
             </button>
+            </template>
 
             <!-- Spieltag Button -->
             <button
@@ -124,7 +126,10 @@
             </button>
             <button
               v-if="row?.spieltag"
-              class="p-2 bg-blue-500 rounded hover:bg-blue-400 transition transform hover:scale-105"
+              @click="kaderModus === 'opt_out' ? spieltagRmSpieler(row) : undefined"
+              :class="kaderModus === 'opt_out' ? 'cursor-pointer hover:scale-105' : 'cursor-default'"
+              :title="kaderModus === 'opt_out' ? 'Vom Spieltag entfernen' : undefined"
+              class="p-2 bg-blue-500 rounded hover:bg-blue-400 transition transform"
             >
               <svg
                 width="24px"
@@ -200,6 +205,9 @@ import { ref, computed } from "vue";
 const kader = ref<any>([]);
 kader.value = await $fetch("/api/kader-show");
 
+const { kaderModus, ladeKaderModus } = useKaderModus();
+await ladeKaderModus();
+
 const spielerInput = ref("");
 
 // Geöffnete Details tracken unabhängig von Index
@@ -235,6 +243,15 @@ async function rmSpieler(spieler: any) {
 // Spieltag hinzufügen
 async function spieltagAddSpieler(spieler: any) {
   await $fetch("/api/spieltag-add-spieler", {
+    method: "POST",
+    body: { spieler },
+  });
+  kader.value = await $fetch("/api/kader-show");
+}
+
+// Spieltag entfernen (opt_out-Modus, z.B. 1. Mannschaft)
+async function spieltagRmSpieler(spieler: any) {
+  await $fetch("/api/spieltag-rm-spieler", {
     method: "POST",
     body: { spieler },
   });
