@@ -174,20 +174,8 @@
             <table class="text-sm">
               <tbody>
                 <tr>
-                  <td class="font-bold pr-2">Flaschen:</td>
-                  <td>{{ row?.flaschen }}</td>
-                </tr>
-                <tr>
-                  <td class="font-bold pr-2">Jacken:</td>
-                  <td>{{ row?.jacken }}</td>
-                </tr>
-                <tr>
-                  <td class="font-bold pr-2">Bälle:</td>
-                  <td>{{ row?.bälle }}</td>
-                </tr>
-                <tr>
-                  <td class="font-bold pr-2">Musikbox:</td>
-                  <td>{{ row?.musikbox }}</td>
+                  <td class="font-bold pr-2">Tunnel:</td>
+                  <td>{{ row?.tunnel }}</td>
                 </tr>
                 <tr>
                   <td class="font-bold pr-2">Strafen:</td>
